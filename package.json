@@ -13,6 +13,8 @@
     "db:migrate": "wrangler d1 migrations apply wowplots-db --local",
     "db:migrate:prod": "wrangler d1 migrations apply wowplots-db --remote",
     "db:studio": "drizzle-kit studio",
+    "db:seed": "wrangler d1 execute wowplots-db --local --file=scripts/seed.sql",
+    "db:seed:prod": "wrangler d1 execute wowplots-db --remote --file=scripts/seed.sql",
     "cf:dev": "wrangler dev",
     "cf:deploy": "opennextjs-cloudflare build && wrangler deploy",
     "preview": "opennextjs-cloudflare build && wrangler dev"
