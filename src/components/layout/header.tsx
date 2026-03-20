@@ -40,7 +40,7 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <Link
-            href="https://discord.gg/wowplots"
+            href="https://discord.gg/mUKzQRbb"
             target="_blank"
             rel="noopener noreferrer"
             className="text-text-secondary hover:text-accent transition-colors"

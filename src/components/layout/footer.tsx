@@ -49,7 +49,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <a
-                  href="https://discord.gg/wowplots"
+                  href="https://discord.gg/mUKzQRbb"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-text-secondary hover:text-accent transition-colors"
