@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 interface Props {
   code: string;
@@ -48,12 +49,12 @@ export function LayoutCodeBlock({ code }: Props) {
         </pre>
       </div>
       <div className="px-4 py-2.5 border-t border-border bg-bg-secondary/50 text-center">
-        <a
+        <Link
           href="/blog/wow-housing-layout-import-export"
           className="text-xs text-wow-gold hover:underline"
         >
           How to import this layout →
-        </a>
+        </Link>
       </div>
     </div>
   );
