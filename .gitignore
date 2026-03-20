@@ -42,6 +42,11 @@ yarn-error.log*
 .open-next/
 .wrangler/
 
+# playwright
+/test-results/
+/playwright-report/
+/blob-report/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
