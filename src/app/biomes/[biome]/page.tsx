@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BIOMES, SITE_URL } from "@/lib/constants";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { BuildsPreview } from "@/components/gallery/builds-preview";
 
 interface Props {
   params: Promise<{ biome: string }>;
@@ -138,28 +139,16 @@ export default async function BiomePage({ params }: Props) {
         </p>
       </section>
 
-      <section className="rounded-xl border border-border bg-bg-card p-8 text-center">
-        <h2 className="text-xl font-bold mb-3">
-          {biome.name} Builds <span className="text-accent">Coming Soon</span>
+      <section className="mb-10">
+        <h2 className="text-2xl font-bold mb-6">
+          {biome.name} <span className="text-accent">Builds</span>
         </h2>
-        <p className="text-text-secondary mb-5">
-          We&apos;re curating the best {biome.name} builds for the gallery.
-          Join the waitlist to be notified when they go live.
-        </p>
-        <div className="flex justify-center gap-3">
-          <Link
-            href="/#waitlist"
-            className="rounded-lg bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-6 py-2.5 text-sm transition-colors"
-          >
-            Join Waitlist
-          </Link>
-          <Link
-            href="/gallery"
-            className="rounded-lg border border-border hover:border-accent text-text-primary hover:text-accent font-semibold px-6 py-2.5 text-sm transition-colors"
-          >
-            Browse Gallery
-          </Link>
-        </div>
+        <BuildsPreview
+          biome={slug}
+          limit={4}
+          viewAllHref={`/gallery?biome=${slug}`}
+          viewAllLabel={`View all ${biome.name} builds`}
+        />
       </section>
 
       <section className="mt-10">

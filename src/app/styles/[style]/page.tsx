@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL, BIOMES } from "@/lib/constants";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { BuildsPreview } from "@/components/gallery/builds-preview";
 
 const STYLES = [
   {
@@ -143,19 +144,16 @@ export default async function StylePage({ params }: { params: Promise<{ style: s
         </div>
       </section>
 
-      <section className="rounded-xl border border-border bg-bg-card p-8 text-center">
-        <h2 className="text-xl font-bold mb-3">
-          {style.name} Builds <span className="text-accent">Coming Soon</span>
+      <section className="mb-10">
+        <h2 className="text-2xl font-bold mb-6">
+          {style.name} <span className="text-accent">Builds</span>
         </h2>
-        <p className="text-text-secondary mb-5">
-          We&apos;re curating {style.name.toLowerCase()} builds for the gallery.
-        </p>
-        <Link
-          href="/#waitlist"
-          className="rounded-lg bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-6 py-2.5 text-sm transition-colors"
-        >
-          Join Waitlist
-        </Link>
+        <BuildsPreview
+          tag={slug}
+          limit={4}
+          viewAllHref={`/gallery?tag=${slug}`}
+          viewAllLabel={`View all ${style.name.toLowerCase()} builds`}
+        />
       </section>
     </div>
   );

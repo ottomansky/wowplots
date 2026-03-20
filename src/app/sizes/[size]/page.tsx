@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { HOUSE_SIZES, SITE_URL } from "@/lib/constants";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { BuildsPreview } from "@/components/gallery/builds-preview";
 
 const SIZE_DETAILS: Record<
   string,
@@ -165,16 +166,16 @@ export default async function SizePage({ params }: { params: Promise<{ size: str
         <p className="text-text-secondary leading-relaxed">{details.tips}</p>
       </section>
 
-      <section className="rounded-xl border border-border bg-bg-card p-8 text-center">
-        <p className="text-text-secondary mb-4">
-          Browse {details.name.toLowerCase()} house builds in the gallery
-        </p>
-        <Link
-          href={`/gallery?size=${size}`}
-          className="rounded-lg bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-6 py-2.5 text-sm transition-colors"
-        >
-          View {details.name} Builds
-        </Link>
+      <section className="mb-10">
+        <h2 className="text-2xl font-bold mb-6">
+          {details.name} <span className="text-accent">Builds</span>
+        </h2>
+        <BuildsPreview
+          size={size}
+          limit={4}
+          viewAllHref={`/gallery?size=${size}`}
+          viewAllLabel={`View all ${details.name.toLowerCase()} builds`}
+        />
       </section>
 
       <section className="mt-10">
