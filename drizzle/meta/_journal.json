@@ -8,6 +8,13 @@
       "when": 1774037470634,
       "tag": "0000_bright_praxagora",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1774044408213,
+      "tag": "0001_tan_the_santerians",
+      "breakpoints": true
     }
   ]
 }

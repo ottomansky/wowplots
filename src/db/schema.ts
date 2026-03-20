@@ -29,6 +29,7 @@ export const builds = sqliteTable(
   "builds",
   {
     id: text("id").primaryKey(), // nanoid
+    slug: text("slug").notNull().unique(),
     userId: text("user_id").references(() => users.id),
     title: text("title").notNull(),
     description: text("description"),
