@@ -1,0 +1,28 @@
+{
+  "name": "wowplots",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-03-14",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // D1 Database
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "wowplots-db",
+      "database_id": "2d5ae70a-2656-4090-8bb9-bd3a4ba44716"
+    }
+  ],
+
+  // R2 Storage
+  "r2_buckets": [
+    {
+      "binding": "IMAGES_BUCKET",
+      "bucket_name": "wowplots-images"
+    }
+  ],
+
+  // Environment variables (secrets set via `wrangler secret put`)
+  "vars": {
+    "ENVIRONMENT": "production"
+  }
+}

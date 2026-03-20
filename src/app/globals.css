@@ -1,26 +1,79 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* WoW-inspired color palette */
+  --color-wow-gold: #f8b700;
+  --color-wow-gold-light: #ffd54f;
+  --color-wow-gold-dark: #c49000;
+  --color-wow-blue: #0070dd;
+  --color-wow-purple: #a335ee;
+  --color-wow-green: #1eff00;
+  --color-wow-orange: #ff8000;
+  --color-wow-red: #ff3333;
+
+  /* Base palette - dark fantasy */
+  --color-bg-primary: #0d0f14;
+  --color-bg-secondary: #151820;
+  --color-bg-tertiary: #1c2030;
+  --color-bg-card: #181c28;
+  --color-bg-card-hover: #1e2336;
+
+  --color-border: #2a2f42;
+  --color-border-light: #363c54;
+
+  --color-text-primary: #e8e6e1;
+  --color-text-secondary: #9a97a0;
+  --color-text-muted: #636070;
+
+  /* Semantic */
+  --color-accent: var(--color-wow-gold);
+  --color-accent-hover: var(--color-wow-gold-light);
+
+  /* Fonts */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-wow-gold-dark);
+}
+
+/* Selection */
+::selection {
+  background: color-mix(in srgb, var(--color-wow-gold) 30%, transparent);
+  color: var(--color-text-primary);
+}
+
+/* Prose styles for articles */
+.prose {
+  --tw-prose-body: var(--color-text-primary);
+  --tw-prose-headings: var(--color-text-primary);
+  --tw-prose-links: var(--color-wow-gold);
+  --tw-prose-bold: var(--color-text-primary);
+  --tw-prose-counters: var(--color-text-secondary);
+  --tw-prose-bullets: var(--color-text-secondary);
+  --tw-prose-hr: var(--color-border);
+  --tw-prose-quotes: var(--color-text-secondary);
+  --tw-prose-code: var(--color-wow-gold);
+  --tw-prose-pre-bg: var(--color-bg-secondary);
 }

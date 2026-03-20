@@ -1,0 +1,123 @@
+---
+title: "How to Import and Export WoW Housing Layouts"
+description: "Step-by-step guide to sharing and importing housing layouts in World of Warcraft. Learn how layout codes work and where to find builds to import."
+category: tutorial
+publishedAt: "2026-03-20"
+author: "WoWPlots Team"
+tags: [layouts, import, export, tutorial]
+---
+
+## What Are Layout Codes?
+
+Layout codes are **text-based snapshots** of your housing decoration arrangements. They encode the position, rotation, scale, and type of every item placed in a room or your entire house. Think of them as save files for your builds.
+
+Layout codes let you:
+
+- **Back up** your current decoration before making changes
+- **Share** your builds with friends and the community
+- **Import** other players' designs into your own house
+- **Move** arrangements between characters
+
+## How to Export a Layout
+
+Exporting your layout is straightforward:
+
+### Export a Single Room
+
+- Enter your house and navigate to the room you want to export
+- Open the Housing menu (default keybind: **Shift+H**)
+- Select **Layout Manager**
+- Click **Export Room**
+- Choose the room from the dropdown
+- Click **Copy to Clipboard**
+
+The layout code is now in your clipboard. You can paste it anywhere — a text file, Discord message, or directly into WoWPlots when community uploads launch.
+
+### Export Your Entire House
+
+- Open the Housing menu
+- Select **Layout Manager**
+- Click **Export House**
+- Choose whether to include outdoor areas
+- Click **Copy to Clipboard**
+
+Full house exports are larger codes but capture everything in one go.
+
+## How to Import a Layout
+
+### Before You Import
+
+**Important**: Importing a layout will **replace** all existing decorations in the target room or house. The game will warn you before applying, and your current layout is automatically backed up.
+
+You also need to **own the decor items** referenced in the layout. Items you don't own will be skipped during import, and you'll see a summary of what was placed and what was missing.
+
+### Import Steps
+
+- Find a layout code you want to use (from WoWPlots, Discord, or a friend)
+- Copy the code to your clipboard
+- Open the Housing menu (**Shift+H**)
+- Select **Layout Manager**
+- Click **Import**
+- Paste the layout code
+- Preview the layout (optional but recommended)
+- Click **Apply**
+
+The import processes immediately. Items you own are placed according to the layout. Missing items are listed in a report so you know what to collect.
+
+## Understanding Layout Code Format
+
+Layout codes use a **JSON-based format** that third-party tools can parse. While you don't need to understand the format to use it, here's what's inside:
+
+- **Header**: Version, house size, room type, biome
+- **Items array**: Each item includes an ID, position (x, y, z), rotation (pitch, yaw, roll), and scale
+- **Metadata**: Creator name, creation date, description (optional)
+
+This structured format is what allows tools like WoWPlots to display layout information and eventually offer preview renders.
+
+## Tips for Layout Sharing
+
+### For Exporters
+
+- **Add descriptions** to your exports so importers know what to expect
+- **Export room-by-room** if your full house is too large — it gives importers more flexibility
+- **Include an item list** when sharing — this helps importers know what they need to collect
+
+### For Importers
+
+- **Preview first** — always use the preview feature before applying
+- **Start with single rooms** rather than full house imports to get comfortable
+- **Check the item report** after importing — missing items often have cheaper alternatives
+- **Make it your own** — a great import is a starting point, not a final product. Personalize it!
+
+## Where to Find Layouts
+
+The best places to find quality WoW housing layouts:
+
+- **WoWPlots Gallery** — browse builds with screenshots and copy layout codes directly from build pages
+- **Architects of Azeroth Discord** — active community sharing layouts daily
+- **r/wow subreddit** — housing showcase posts often include layout codes
+- **WoW forums** — official Housing & Decoration subforum
+
+## Common Issues
+
+### "Some items could not be placed"
+
+This means you don't own all the items in the layout. Check the report for missing items and work on obtaining them. The rest of the layout will be placed correctly.
+
+### "Layout version mismatch"
+
+Layout codes include a version number. If the format has been updated since the code was created, you may see this warning. Most version mismatches are handled automatically, but very old codes may need to be re-exported.
+
+### "Exceeds decor budget"
+
+Your housing level determines your maximum decor budget. If a layout uses more items than your budget allows, you'll need to level up your housing before importing it.
+
+## What's Next
+
+Blizzard has announced several upcoming improvements to the layout system:
+
+- **Copy/paste within houses** — duplicate arrangements from room to room
+- **Partial imports** — select which parts of a layout to apply
+- **Visitor codes** — share time-limited access to view (not copy) your house
+
+The layout import/export system is one of the most powerful features of WoW housing. Combined with the WoWPlots gallery, it makes discovering and replicating inspiring builds easier than ever.
