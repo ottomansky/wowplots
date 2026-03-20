@@ -1,6 +1,8 @@
 import { getAllArticles } from "@/lib/articles";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
 
+export const dynamic = "force-static";
+
 export function GET() {
   const articles = getAllArticles();
 
