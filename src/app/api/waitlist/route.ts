@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod/v4";
+import { eq } from "drizzle-orm";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { getDb } from "@/db";
 import { waitlist } from "@/db/schema";
@@ -17,6 +18,20 @@ export async function POST(request: NextRequest) {
     const { env } = getCloudflareContext();
     const db = getDb(env.DB);
 
+    // Check if already on waitlist
+    const existing = await db
+      .select({ id: waitlist.id })
+      .from(waitlist)
+      .where(eq(waitlist.email, email))
+      .limit(1);
+
+    if (existing.length > 0) {
+      return NextResponse.json(
+        { error: "This email is already on the waitlist!" },
+        { status: 409 },
+      );
+    }
+
     await db.insert(waitlist).values({ id: nanoid(), email });
 
     return NextResponse.json({ success: true });
@@ -25,17 +40,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: "Please enter a valid email address." },
         { status: 400 },
-      );
-    }
-
-    // Handle duplicate email
-    if (
-      error instanceof Error &&
-      error.message.includes("UNIQUE constraint failed")
-    ) {
-      return NextResponse.json(
-        { error: "This email is already on the waitlist!" },
-        { status: 409 },
       );
     }
 

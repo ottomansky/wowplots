@@ -1,8 +1,15 @@
 {
+  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "wowplots",
   "main": ".open-next/worker.js",
   "compatibility_date": "2025-03-14",
   "compatibility_flags": ["nodejs_compat"],
+
+  // Static assets (SSG pages, JS/CSS bundles, images)
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
 
   // D1 Database
   "d1_databases": [
@@ -13,7 +20,7 @@
     }
   ],
 
-  // R2 Storage
+  // R2 Storage (user-uploaded images)
   "r2_buckets": [
     {
       "binding": "IMAGES_BUCKET",
