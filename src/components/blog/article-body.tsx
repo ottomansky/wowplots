@@ -3,15 +3,13 @@ interface Props {
 }
 
 export function ArticleBody({ content }: Props) {
-  // Simple markdown-to-HTML renderer for initial articles
-  // Will be replaced with proper MDX rendering in Phase 2
   const html = markdownToHtml(content);
 
   return (
     <div
       className="prose prose-invert max-w-none
-        [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:text-text-primary
-        [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:mt-8 [&_h3]:mb-3 [&_h3]:text-text-primary
+        [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:text-text-primary [&_h2]:scroll-mt-20
+        [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:mt-8 [&_h3]:mb-3 [&_h3]:text-text-primary [&_h3]:scroll-mt-20
         [&_p]:text-text-secondary [&_p]:leading-relaxed [&_p]:mb-4
         [&_ul]:text-text-secondary [&_ul]:mb-4 [&_ul]:list-disc [&_ul]:pl-6
         [&_ol]:text-text-secondary [&_ol]:mb-4 [&_ol]:list-decimal [&_ol]:pl-6
@@ -26,12 +24,29 @@ export function ArticleBody({ content }: Props) {
   );
 }
 
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/<[^>]*>/g, "") // strip HTML tags
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
 function markdownToHtml(md: string): string {
   let html = md
-    // Headers
-    .replace(/^### (.*$)/gim, "<h3>$1</h3>")
-    .replace(/^## (.*$)/gim, "<h2>$1</h2>")
-    .replace(/^# (.*$)/gim, "<h1>$1</h1>")
+    // Headers with IDs for TOC linking
+    .replace(/^### (.*$)/gim, (_match, text) => {
+      const id = slugify(text);
+      return `<h3 id="${id}">${text}</h3>`;
+    })
+    .replace(/^## (.*$)/gim, (_match, text) => {
+      const id = slugify(text);
+      return `<h2 id="${id}">${text}</h2>`;
+    })
+    .replace(/^# (.*$)/gim, (_match, text) => {
+      const id = slugify(text);
+      return `<h1 id="${id}">${text}</h1>`;
+    })
     // Bold and italic
     .replace(/\*\*\*(.*?)\*\*\*/g, "<strong><em>$1</em></strong>")
     .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
@@ -52,9 +67,9 @@ function markdownToHtml(md: string): string {
 
   // Wrap in paragraphs
   html = `<p>${html}</p>`;
-  // Clean up empty paragraphs
+  // Clean up: remove paragraphs wrapping block elements
   html = html.replace(/<p>\s*<\/p>/g, "");
-  html = html.replace(/<p>\s*(<h[1-3]>)/g, "$1");
+  html = html.replace(/<p>\s*(<h[1-3][^>]*>)/g, "$1");
   html = html.replace(/(<\/h[1-3]>)\s*<\/p>/g, "$1");
   html = html.replace(/<p>\s*(<ul>)/g, "$1");
   html = html.replace(/(<\/ul>)\s*<\/p>/g, "$1");

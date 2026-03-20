@@ -1,10 +1,12 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import Link from "next/link";
-import { getArticle, getArticleSlugs } from "@/lib/articles";
+import { getArticle, getArticleSlugs, getRelatedArticles } from "@/lib/articles";
 import { formatDate } from "@/lib/utils";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { ArticleBody } from "@/components/blog/article-body";
+import { TableOfContents } from "@/components/blog/table-of-contents";
+import { RelatedArticles } from "@/components/blog/related-articles";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -44,6 +46,8 @@ export default async function ArticlePage({ params }: Props) {
   const article = getArticle(slug);
   if (!article) notFound();
 
+  const related = getRelatedArticles(article);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -69,17 +73,12 @@ export default async function ArticlePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <nav className="mb-8 text-sm text-text-muted">
-        <Link href="/" className="hover:text-accent transition-colors">
-          Home
-        </Link>
-        <span className="mx-2">/</span>
-        <Link href="/blog" className="hover:text-accent transition-colors">
-          Guides
-        </Link>
-        <span className="mx-2">/</span>
-        <span className="text-text-secondary">{article.title}</span>
-      </nav>
+      <Breadcrumbs
+        items={[
+          { label: "Guides", href: "/blog" },
+          { label: article.title },
+        ]}
+      />
 
       <header className="mb-10">
         <div className="flex items-center gap-3 mb-4">
@@ -102,7 +101,11 @@ export default async function ArticlePage({ params }: Props) {
         </div>
       </header>
 
+      <TableOfContents entries={article.toc} />
+
       <ArticleBody content={article.content} />
+
+      <RelatedArticles articles={related} />
     </article>
   );
 }

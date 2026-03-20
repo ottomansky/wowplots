@@ -1,5 +1,12 @@
 import fs from "fs";
 import path from "path";
+import { slugify } from "./utils";
+
+export interface TocEntry {
+  id: string;
+  text: string;
+  level: number;
+}
 
 export interface ArticleMeta {
   slug: string;
@@ -16,6 +23,7 @@ export interface ArticleMeta {
 
 export interface Article extends ArticleMeta {
   content: string;
+  toc: TocEntry[];
 }
 
 const ARTICLES_DIR = path.join(process.cwd(), "src/content/articles");
@@ -37,6 +45,7 @@ export function getArticle(slug: string): Article | null {
 
   const words = content.split(/\s+/).length;
   const readingTime = Math.ceil(words / 200);
+  const toc = extractToc(content);
 
   return {
     slug,
@@ -50,6 +59,7 @@ export function getArticle(slug: string): Article | null {
     tags: Array.isArray(meta.tags) ? meta.tags.map(String) : [],
     readingTime,
     content,
+    toc,
   };
 }
 
@@ -58,14 +68,53 @@ export function getAllArticles(): ArticleMeta[] {
     .map((slug) => {
       const article = getArticle(slug);
       if (!article) return null;
-      const { content: _, ...meta } = article;
+      const { content: _, toc: _toc, ...meta } = article;
       return meta;
     })
     .filter((a): a is ArticleMeta => a !== null)
     .sort(
       (a, b) =>
-        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
     );
+}
+
+export function getRelatedArticles(
+  current: ArticleMeta,
+  count = 3,
+): ArticleMeta[] {
+  const all = getAllArticles().filter((a) => a.slug !== current.slug);
+
+  // Score by shared tags and same category
+  const scored = all.map((article) => {
+    let score = 0;
+    for (const tag of article.tags) {
+      if (current.tags.includes(tag)) score += 2;
+    }
+    if (article.category === current.category) score += 1;
+    return { article, score };
+  });
+
+  return scored
+    .sort((a, b) => b.score - a.score)
+    .slice(0, count)
+    .map((s) => s.article);
+}
+
+function extractToc(content: string): TocEntry[] {
+  const entries: TocEntry[] = [];
+  const lines = content.split("\n");
+
+  for (const line of lines) {
+    const match = line.match(/^(#{2,3})\s+(.+)$/);
+    if (match) {
+      const level = match[1].length;
+      const text = match[2].trim();
+      const id = slugify(text);
+      entries.push({ id, text, level });
+    }
+  }
+
+  return entries;
 }
 
 function parseFrontmatter(raw: string): {
@@ -81,14 +130,16 @@ function parseFrontmatter(raw: string): {
     if (idx === -1) continue;
     const key = line.slice(0, idx).trim();
     let value: unknown = line.slice(idx + 1).trim();
-    // Handle arrays like [tag1, tag2]
-    if (typeof value === "string" && value.startsWith("[") && value.endsWith("]")) {
+    if (
+      typeof value === "string" &&
+      value.startsWith("[") &&
+      value.endsWith("]")
+    ) {
       value = value
         .slice(1, -1)
         .split(",")
         .map((s) => s.trim().replace(/^["']|["']$/g, ""));
     }
-    // Remove quotes
     if (typeof value === "string") {
       value = value.replace(/^["']|["']$/g, "");
     }

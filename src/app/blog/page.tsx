@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getAllArticles } from "@/lib/articles";
 import { formatDate } from "@/lib/utils";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Guides & Articles",
@@ -14,6 +15,7 @@ export default function BlogIndex() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-16">
+      <Breadcrumbs items={[{ label: "Guides" }]} />
       <h1 className="text-4xl font-bold mb-3">
         Guides & <span className="text-accent">Articles</span>
       </h1>
