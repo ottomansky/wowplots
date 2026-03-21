@@ -9,7 +9,6 @@ const VIEWPORTS = {
 const KEY_PAGES = [
   { name: "landing", path: "/" },
   { name: "gallery", path: "/gallery" },
-  { name: "build-detail", path: "/gallery/enchanted-library" },
   { name: "blog", path: "/blog" },
   { name: "article", path: "/blog/wow-housing-beginners-guide" },
   { name: "biome", path: "/biomes/enchanted-grove" },

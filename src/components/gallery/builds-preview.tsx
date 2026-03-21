@@ -64,10 +64,13 @@ export function BuildsPreview({
 
   if (builds.length === 0) {
     return (
-      <div className="rounded-xl border border-border bg-bg-card p-8 text-center">
-        <p className="text-text-secondary text-sm">
-          No builds yet — check back soon!
+      <div className="rounded-xl border border-border bg-bg-card/50 p-8 text-center">
+        <p className="text-text-secondary text-[14px] mb-3">
+          No builds here yet — be the first to share one!
         </p>
+        <a href="/submit" className="btn btn-primary text-[13px] px-5 py-2">
+          Submit a Build
+        </a>
       </div>
     );
   }

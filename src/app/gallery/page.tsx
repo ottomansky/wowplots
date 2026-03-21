@@ -81,7 +81,11 @@ export default async function GalleryPage({ searchParams }: Props) {
       </div>
 
       {/* Results */}
-      <GalleryGrid builds={builds} nextCursor={nextCursor} />
+      <GalleryGrid
+        builds={builds}
+        nextCursor={nextCursor}
+        hasFilters={!!(params.biome || params.size || params.tag || params.q)}
+      />
     </div>
   );
 }

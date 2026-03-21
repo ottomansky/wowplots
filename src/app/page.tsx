@@ -127,7 +127,7 @@ export default function Home() {
             {BIOMES.map((biome) => (
               <Link
                 key={biome.slug}
-                href={`/gallery?biome=${biome.slug}`}
+                href={`/biomes/${biome.slug}`}
                 className="group relative rounded-2xl overflow-hidden border border-border hover:border-border-accent transition-all duration-300"
               >
                 <div className="aspect-[3/2] bg-gradient-to-br from-bg-tertiary via-bg-card to-bg-tertiary" />

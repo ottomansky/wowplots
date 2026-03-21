@@ -39,29 +39,29 @@ test.describe("API endpoints", () => {
     expect(builds.length).toBeLessThanOrEqual(2);
   });
 
-  test("POST /api/builds/bld_enchanted_lib_01/like returns 401 without auth", async ({
+  test("POST /api/builds/fake-build-id-test/like returns 401 without auth", async ({
     request,
   }) => {
     const response = await request.post(
-      "/api/builds/bld_enchanted_lib_01/like",
+      "/api/builds/fake-build-id-test/like",
     );
     expect(response.status()).toBe(401);
   });
 
-  test("POST /api/builds/bld_enchanted_lib_01/bookmark returns 401 without auth", async ({
+  test("POST /api/builds/fake-build-id-test/bookmark returns 401 without auth", async ({
     request,
   }) => {
     const response = await request.post(
-      "/api/builds/bld_enchanted_lib_01/bookmark",
+      "/api/builds/fake-build-id-test/bookmark",
     );
     expect(response.status()).toBe(401);
   });
 
-  test("POST /api/builds/bld_enchanted_lib_01/comments returns 401 without auth", async ({
+  test("POST /api/builds/fake-build-id-test/comments returns 401 without auth", async ({
     request,
   }) => {
     const response = await request.post(
-      "/api/builds/bld_enchanted_lib_01/comments",
+      "/api/builds/fake-build-id-test/comments",
       {
         data: { content: "test comment" },
       },
