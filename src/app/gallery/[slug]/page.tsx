@@ -10,6 +10,9 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ImageGallery } from "@/components/gallery/image-gallery";
 import { LayoutCodeBlock } from "@/components/gallery/layout-code-block";
 import { BuildCard } from "@/components/gallery/build-card";
+import { LikeButton } from "@/components/gallery/like-button";
+import { BookmarkButton } from "@/components/gallery/bookmark-button";
+import { CommentsSection } from "@/components/gallery/comments-section";
 
 export const dynamic = "force-dynamic";
 
@@ -125,22 +128,22 @@ export default async function BuildDetailPage({ params }: Props) {
               )}
             </div>
 
-            {/* Stats */}
+            {/* Actions */}
             <div className="flex items-center gap-4 text-sm text-text-muted mb-4">
-              <span className="flex items-center gap-1.5">
-                <svg className="h-4 w-4 text-wow-red/70" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
-                </svg>
-                {build.likeCount} likes
-              </span>
+              <LikeButton
+                buildId={build.id}
+                initialCount={build.likeCount}
+                size="md"
+              />
+              <BookmarkButton buildId={build.id} />
               <span className="flex items-center gap-1.5">
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
                   <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                {build.viewCount} views
+                {build.viewCount}
               </span>
-              <span>{formatDate(build.createdAt)}</span>
+              <span className="text-text-muted">{formatDate(build.createdAt)}</span>
             </div>
           </div>
 
@@ -208,6 +211,9 @@ export default async function BuildDetailPage({ params }: Props) {
           )}
         </div>
       </div>
+
+      {/* Comments */}
+      <CommentsSection buildId={build.id} />
 
       {/* Related builds */}
       {related.length > 0 && (

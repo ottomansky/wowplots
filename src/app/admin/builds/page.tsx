@@ -1,12 +1,21 @@
 import Link from "next/link";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { getDb } from "@/db";
 import { builds } from "@/db/schema";
 import { desc } from "drizzle-orm";
+import { getSession, isAdmin } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminBuildsPage() {
+  const h = await headers();
+  const user = await getSession(h.get("cookie"));
+  if (!user || !isAdmin(user)) {
+    redirect("/api/auth/discord?return=/admin/builds");
+  }
+
   const { env } = getCloudflareContext();
   const db = getDb(env.DB);
 
