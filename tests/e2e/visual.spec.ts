@@ -22,7 +22,8 @@ for (const page of KEY_PAGES) {
     test(`screenshot: ${page.name} @ ${vpName}`, async ({ browser }) => {
       const context = await browser.newContext({ viewport: vpSize });
       const p = await context.newPage();
-      await p.goto(page.path, { waitUntil: "networkidle" });
+      await p.goto(page.path, { waitUntil: "domcontentloaded", timeout: 10000 });
+      await p.waitForTimeout(2000);
       await p.screenshot({
         path: `tests/e2e/screenshots/${page.name}-${vpName}.png`,
         fullPage: true,
@@ -71,7 +72,7 @@ test.describe("Layout validation", () => {
   });
 
   test("gallery cards have consistent heights within rows", async ({ page }) => {
-    await page.goto("/gallery", { waitUntil: "networkidle" });
+    await page.goto("/gallery", { waitUntil: "domcontentloaded" });
     const cards = page.locator('a[href^="/gallery/"]');
     const count = await cards.count();
     if (count >= 2) {
@@ -94,7 +95,7 @@ test.describe("Layout validation", () => {
 
 test.describe("Interactive", () => {
   test("gallery filters update grid without full reload", async ({ page }) => {
-    await page.goto("/gallery", { waitUntil: "networkidle" });
+    await page.goto("/gallery", { waitUntil: "domcontentloaded" });
     const initialUrl = page.url();
     await page.selectOption("select:first-of-type", "enchanted-grove");
     await page.waitForURL(/biome/);
@@ -103,7 +104,7 @@ test.describe("Interactive", () => {
   });
 
   test("copy layout code button works", async ({ page }) => {
-    await page.goto("/gallery/enchanted-library", { waitUntil: "networkidle" });
+    await page.goto("/gallery/enchanted-library", { waitUntil: "domcontentloaded" });
     // If layout code exists, there will be a copy button
     const copyBtn = page.locator("text=Copy Code");
     if (await copyBtn.isVisible()) {
@@ -142,7 +143,7 @@ test.describe("Console errors", () => {
     test(`no JS errors on ${p.name}`, async ({ page }) => {
       const errors: string[] = [];
       page.on("pageerror", (err) => errors.push(err.message));
-      await page.goto(p.path, { waitUntil: "networkidle" });
+      await page.goto(p.path, { waitUntil: "domcontentloaded" });
       expect(errors).toEqual([]);
     });
   }

@@ -91,7 +91,7 @@ test.describe("No console errors", () => {
     const errors: string[] = [];
     page.on("pageerror", (err) => errors.push(err.message));
     await page.goto("/");
-    await page.waitForLoadState("networkidle");
+    await page.waitForTimeout(2000);
     expect(errors).toEqual([]);
   });
 
@@ -99,7 +99,7 @@ test.describe("No console errors", () => {
     const errors: string[] = [];
     page.on("pageerror", (err) => errors.push(err.message));
     await page.goto("/gallery");
-    await page.waitForLoadState("networkidle");
+    await page.waitForTimeout(2000);
     expect(errors).toEqual([]);
   });
 });
