@@ -8,17 +8,17 @@ export function ArticleBody({ content }: Props) {
   return (
     <div
       className="prose prose-invert max-w-none
-        [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:text-text-primary [&_h2]:scroll-mt-20
-        [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:mt-8 [&_h3]:mb-3 [&_h3]:text-text-primary [&_h3]:scroll-mt-20
-        [&_p]:text-text-secondary [&_p]:leading-relaxed [&_p]:mb-4
-        [&_ul]:text-text-secondary [&_ul]:mb-4 [&_ul]:list-disc [&_ul]:pl-6
-        [&_ol]:text-text-secondary [&_ol]:mb-4 [&_ol]:list-decimal [&_ol]:pl-6
-        [&_li]:mb-1.5 [&_li]:leading-relaxed
+        [&_h2]:text-[22px] [&_h2]:font-bold [&_h2]:tracking-tight [&_h2]:mt-12 [&_h2]:mb-4 [&_h2]:text-text-primary [&_h2]:scroll-mt-20
+        [&_h3]:text-[17px] [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-9 [&_h3]:mb-3 [&_h3]:text-text-primary [&_h3]:scroll-mt-20
+        [&_p]:text-[15px] [&_p]:text-text-secondary [&_p]:leading-[1.7] [&_p]:mb-5
+        [&_ul]:text-[15px] [&_ul]:text-text-secondary [&_ul]:mb-5 [&_ul]:list-disc [&_ul]:pl-6
+        [&_ol]:text-[15px] [&_ol]:text-text-secondary [&_ol]:mb-5 [&_ol]:list-decimal [&_ol]:pl-6
+        [&_li]:mb-2 [&_li]:leading-[1.7]
         [&_strong]:text-text-primary [&_strong]:font-semibold
-        [&_a]:text-accent [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-accent-hover
-        [&_blockquote]:border-l-2 [&_blockquote]:border-accent/30 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-text-muted
-        [&_code]:text-accent [&_code]:bg-bg-secondary [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-sm
-        [&_hr]:border-border [&_hr]:my-8"
+        [&_a]:text-accent [&_a]:underline [&_a]:underline-offset-3 [&_a]:decoration-accent/40 hover:[&_a]:decoration-accent hover:[&_a]:text-accent-hover
+        [&_blockquote]:border-l-2 [&_blockquote]:border-accent/20 [&_blockquote]:pl-5 [&_blockquote]:italic [&_blockquote]:text-text-muted [&_blockquote]:my-6
+        [&_code]:text-accent [&_code]:bg-bg-tertiary [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded-md [&_code]:text-[13px]
+        [&_hr]:border-border [&_hr]:my-10"
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );

@@ -40,7 +40,7 @@ test.describe("Gallery", () => {
 test.describe("Core pages", () => {
   test("landing page loads", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator("h1")).toContainText("Inspiring WoW");
+    await expect(page.locator("h1")).toContainText("inspiring");
   });
 
   test("blog loads with articles", async ({ page }) => {

@@ -20,9 +20,8 @@ export default function Home() {
           </div>
 
           {/* Headline */}
-          <h1 className="animate-in-up text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.08] tracking-[-0.03em] mb-7" style={{ animationDelay: "80ms" }}>
-            Discover the most inspiring
-            <br />
+          <h1 className="animate-in-up text-[clamp(2.5rem,5.5vw,4rem)] font-bold leading-[1.12] tracking-[-0.025em] mb-7" style={{ animationDelay: "80ms" }}>
+            Discover the most inspiring{" "}
             <span className="text-accent">WoW housing builds</span>
           </h1>
 
