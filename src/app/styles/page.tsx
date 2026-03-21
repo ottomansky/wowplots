@@ -21,13 +21,13 @@ const STYLES = [
 
 export default function StylesIndex() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-16">
+    <div className="mx-auto max-w-[56rem] px-4 py-16">
       <Breadcrumbs items={[{ label: "Styles" }]} />
 
       <h1 className="text-4xl font-bold mb-3">
         Housing <span className="text-accent">Styles</span>
       </h1>
-      <p className="text-text-secondary mb-12 max-w-xl">
+      <p className="text-text-secondary mb-12 max-w-[36rem]">
         From rustic cottages to elegant manors, explore every housing style and
         find the one that matches your vision.
       </p>

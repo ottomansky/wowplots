@@ -12,7 +12,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_-5%,_var(--color-wow-gold)_0%,_transparent_55%)] opacity-[0.06]" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-[radial-gradient(circle,_var(--color-wow-gold-dark)_0%,_transparent_70%)] opacity-[0.03] animate-[glow-pulse_6s_ease-in-out_infinite]" />
 
-        <div className="relative z-10 mx-auto max-w-4xl px-5 pt-28 pb-24 text-center">
+        <div className="relative z-10 mx-auto max-w-[56rem] px-5 pt-28 pb-24 text-center">
           {/* Status pill */}
           <div className="animate-in-up inline-flex items-center gap-2 rounded-full border border-border bg-bg-card/50 backdrop-blur-sm px-4 py-1.5 text-[12px] tracking-wide text-text-secondary mb-10" style={{ animationDelay: "0ms" }}>
             <span className="h-1.5 w-1.5 rounded-full bg-wow-green" />
@@ -26,7 +26,7 @@ export default function Home() {
           </h1>
 
           {/* Subtext */}
-          <p className="animate-in-up text-[17px] leading-relaxed text-text-secondary max-w-lg mx-auto mb-10" style={{ animationDelay: "160ms" }}>
+          <p className="animate-in-up text-[17px] leading-relaxed text-text-secondary max-w-[32rem] mx-auto mb-10" style={{ animationDelay: "160ms" }}>
             {SITE_NAME} is the community gallery for World of Warcraft player
             housing. Browse builds, find ideas, share your creations.
           </p>
@@ -48,12 +48,12 @@ export default function Home() {
 
       {/* ── Features ─────────────────────────────────────── */}
       <section className="py-24">
-        <div className="mx-auto max-w-5xl px-5">
+        <div className="mx-auto max-w-[64rem] px-5">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tight mb-3">
               Your housing <span className="text-accent">inspiration hub</span>
             </h2>
-            <p className="text-text-secondary text-[15px] max-w-md mx-auto">
+            <p className="text-text-secondary text-[15px] max-w-[28rem] mx-auto">
               Not a database. Not a spreadsheet. A visual gallery built for
               housing enthusiasts.
             </p>
@@ -113,12 +113,12 @@ export default function Home() {
 
       {/* ── Biomes ───────────────────────────────────────── */}
       <section className="py-24 bg-bg-secondary/50 relative noise-overlay">
-        <div className="relative z-10 mx-auto max-w-5xl px-5">
+        <div className="relative z-10 mx-auto max-w-[64rem] px-5">
           <div className="text-center mb-14">
             <h2 className="text-3xl font-bold tracking-tight mb-3">
               Explore by <span className="text-accent">biome</span>
             </h2>
-            <p className="text-text-secondary text-[15px] max-w-md mx-auto">
+            <p className="text-text-secondary text-[15px] max-w-[28rem] mx-auto">
               Six unique neighborhoods. Six different moods. Find the backdrop
               that matches your vision.
             </p>
@@ -151,7 +151,7 @@ export default function Home() {
       {/* ── Waitlist CTA ─────────────────────────────────── */}
       <section className="py-24 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,_var(--color-wow-gold)_0%,_transparent_70%)] opacity-[0.02]" />
-        <div className="relative z-10 mx-auto max-w-lg px-5 text-center">
+        <div className="relative z-10 mx-auto max-w-[32rem] px-5 text-center">
           <h2 className="text-3xl font-bold tracking-tight mb-4">
             Be first to <span className="text-accent">share your builds</span>
           </h2>

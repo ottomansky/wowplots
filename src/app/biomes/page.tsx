@@ -11,13 +11,13 @@ export const metadata: Metadata = {
 
 export default function BiomesIndex() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-16">
+    <div className="mx-auto max-w-[56rem] px-4 py-16">
       <Breadcrumbs items={[{ label: "Biomes" }]} />
 
       <h1 className="text-4xl font-bold mb-3">
         Housing <span className="text-accent">Biomes</span>
       </h1>
-      <p className="text-text-secondary mb-12 max-w-xl">
+      <p className="text-text-secondary mb-12 max-w-[36rem]">
         Every WoW housing neighborhood is set in one of six distinct biomes.
         Explore each one to find the perfect backdrop for your builds.
       </p>

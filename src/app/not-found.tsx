@@ -3,7 +3,7 @@ import { LogoMark } from "@/components/logo";
 
 export default function NotFound() {
   return (
-    <div className="mx-auto max-w-md px-5 py-32 text-center">
+    <div className="mx-auto max-w-[28rem] px-5 py-32 text-center">
       <div className="text-accent/20 mb-6 flex justify-center">
         <LogoMark size={80} />
       </div>

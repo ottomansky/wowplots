@@ -96,7 +96,7 @@ export default async function StylePage({ params }: { params: Promise<{ style: s
   if (!style) notFound();
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-16">
+    <div className="mx-auto max-w-[48rem] px-4 py-16">
       <Breadcrumbs
         items={[
           { label: "Styles", href: "/styles" },

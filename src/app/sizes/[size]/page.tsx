@@ -109,7 +109,7 @@ export default async function SizePage({ params }: { params: Promise<{ size: str
   if (!details) notFound();
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-16">
+    <div className="mx-auto max-w-[48rem] px-4 py-16">
       <Breadcrumbs
         items={[
           { label: "Sizes", href: "/sizes" },

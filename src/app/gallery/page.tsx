@@ -55,14 +55,14 @@ export default async function GalleryPage({ searchParams }: Props) {
   }
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12">
+    <div className="mx-auto max-w-[80rem] px-4 py-12">
       <Breadcrumbs items={[{ label: "Gallery" }]} />
 
       <div className="mb-10">
         <h1 className="text-4xl font-bold mb-2">
           Housing <span className="text-accent">Gallery</span>
         </h1>
-        <p className="text-text-secondary max-w-lg text-[15px]">
+        <p className="text-text-secondary max-w-[32rem] text-[15px]">
           Discover inspiring WoW housing builds from the community.
           Filter by biome, size, or style.
         </p>
@@ -70,7 +70,7 @@ export default async function GalleryPage({ searchParams }: Props) {
 
       {/* Search + Filters */}
       <div className="mb-8 space-y-4">
-        <div className="max-w-md">
+        <div className="max-w-[28rem]">
           <Suspense>
             <GallerySearch />
           </Suspense>

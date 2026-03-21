@@ -4,7 +4,7 @@ import { Logo } from "@/components/logo";
 export function Footer() {
   return (
     <footer className="border-t border-border bg-bg-secondary/40 mt-auto">
-      <div className="mx-auto max-w-7xl px-5 py-14">
+      <div className="mx-auto max-w-[80rem] px-5 py-14">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="md:col-span-1">

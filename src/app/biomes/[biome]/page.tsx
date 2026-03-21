@@ -77,7 +77,7 @@ export default async function BiomePage({ params }: Props) {
   const details = BIOME_DETAILS[slug];
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-16">
+    <div className="mx-auto max-w-[48rem] px-4 py-16">
       <Breadcrumbs
         items={[
           { label: "Biomes", href: "/biomes" },

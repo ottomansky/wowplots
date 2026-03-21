@@ -27,7 +27,7 @@ export default async function AdminBuildsPage() {
     .limit(100);
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12">
+    <div className="mx-auto max-w-[64rem] px-4 py-12">
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-3xl font-bold">
           Admin: <span className="text-accent">Builds</span>

@@ -11,7 +11,7 @@ const navLinks = [
 export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-bg-primary/85 backdrop-blur-2xl">
-      <div className="mx-auto max-w-7xl flex items-center justify-between px-5 h-16">
+      <div className="mx-auto max-w-[80rem] flex items-center justify-between px-5 h-16">
         <Link
           href="/"
           className="text-accent hover:text-accent-hover transition-colors"

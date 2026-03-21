@@ -48,7 +48,7 @@ export default function NewBuildPage() {
   }
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-12">
+    <div className="mx-auto max-w-[42rem] px-4 py-12">
       <h1 className="text-3xl font-bold mb-8">
         New <span className="text-accent">Build</span>
       </h1>

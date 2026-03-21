@@ -34,13 +34,13 @@ const SIZES = [
 
 export default function SizesIndex() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-16">
+    <div className="mx-auto max-w-[56rem] px-4 py-16">
       <Breadcrumbs items={[{ label: "Sizes" }]} />
 
       <h1 className="text-4xl font-bold mb-3">
         House <span className="text-accent">Sizes</span>
       </h1>
-      <p className="text-text-secondary mb-12 max-w-xl">
+      <p className="text-text-secondary mb-12 max-w-[36rem]">
         WoW housing offers three house sizes, each with different room counts
         and decoration budgets. Compare them to find your ideal canvas.
       </p>

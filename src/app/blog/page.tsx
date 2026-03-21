@@ -14,12 +14,12 @@ export default function BlogIndex() {
   const articles = getAllArticles();
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-16">
+    <div className="mx-auto max-w-[56rem] px-4 py-16">
       <Breadcrumbs items={[{ label: "Guides" }]} />
       <h1 className="text-4xl font-bold mb-3">
         Guides & <span className="text-accent">Articles</span>
       </h1>
-      <p className="text-text-secondary mb-12 max-w-xl">
+      <p className="text-text-secondary mb-12 max-w-[36rem]">
         Everything you need to know about WoW player housing — from beginner
         guides to advanced building techniques.
       </p>
