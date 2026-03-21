@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { WaitlistForm } from "@/components/waitlist-form";
 import { BIOMES, SITE_NAME } from "@/lib/constants";
 
 export default function Home() {
@@ -148,18 +147,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Waitlist CTA ─────────────────────────────────── */}
+      {/* ── Community CTA ────────────────────────────────── */}
       <section className="py-24 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,_var(--color-wow-gold)_0%,_transparent_70%)] opacity-[0.02]" />
         <div className="relative z-10 mx-auto max-w-[32rem] px-5 text-center">
           <h2 className="text-3xl font-bold tracking-tight mb-4">
-            Be first to <span className="text-accent">share your builds</span>
+            Share your <span className="text-accent">housing builds</span>
           </h2>
           <p className="text-text-secondary text-[15px] mb-8 leading-relaxed">
-            Community uploads are coming soon. Join the waitlist to be notified
-            when you can submit your housing builds.
+            Sign in with Discord and showcase your creations to the WoW
+            housing community. Browse, like, and bookmark your favorites.
           </p>
-          <WaitlistForm />
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link href="/submit" className="btn btn-primary px-7 py-3 text-[14px]">
+              Submit Your Build
+            </Link>
+            <Link
+              href="https://discord.gg/mUKzQRbb"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ghost text-[13px]"
+            >
+              Join our Discord
+            </Link>
+          </div>
         </div>
       </section>
     </>

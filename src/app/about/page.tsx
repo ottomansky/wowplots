@@ -70,9 +70,9 @@ export default function AboutPage() {
               <strong className="text-text-primary">
                 Submit your builds
               </strong>{" "}
-              — community uploads are opening soon.{" "}
-              <Link href="/#waitlist" className="text-accent hover:underline">
-                Join the waitlist
+              — sign in with Discord and{" "}
+              <Link href="/submit" className="text-accent hover:underline">
+                share your creations
               </Link>
             </span>
           </li>

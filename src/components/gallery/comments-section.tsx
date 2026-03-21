@@ -75,6 +75,13 @@ export function CommentsSection({ buildId }: Props) {
         Comments {comments.length > 0 && <span className="text-text-muted font-normal">({comments.length})</span>}
       </h2>
 
+      {/* Empty state hint (above form) */}
+      {!loading && comments.length === 0 && (
+        <p className="text-text-muted text-[13px] text-center py-4 mb-4 border border-border/50 rounded-xl bg-bg-card/30">
+          No comments yet — be the first to share your thoughts
+        </p>
+      )}
+
       {/* Add comment */}
       <form onSubmit={handleSubmit} className="mb-8">
         <textarea
@@ -111,11 +118,7 @@ export function CommentsSection({ buildId }: Props) {
             </div>
           ))}
         </div>
-      ) : comments.length === 0 ? (
-        <p className="text-text-muted text-[13px] text-center py-6">
-          No comments yet. Be the first to share your thoughts!
-        </p>
-      ) : (
+      ) : comments.length === 0 ? null : (
         <div className="space-y-5">
           {comments.map((comment) => (
             <div key={comment.id} className="flex gap-3">
