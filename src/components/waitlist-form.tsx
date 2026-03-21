@@ -24,7 +24,7 @@ export function WaitlistForm() {
 
       if (res.ok) {
         setStatus("success");
-        setMessage("You're on the list! We'll notify you when uploads open.");
+        setMessage("You\u2019re on the list! We\u2019ll notify you when uploads open.");
         setEmail("");
       } else {
         setStatus("error");
@@ -39,30 +39,33 @@ export function WaitlistForm() {
   return (
     <div>
       {status === "success" ? (
-        <div className="rounded-lg border border-wow-green/30 bg-wow-green/5 p-4 text-wow-green text-sm">
+        <div className="rounded-xl border border-wow-green/20 bg-wow-green/5 p-5 text-wow-green text-[14px]">
           {message}
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col sm:flex-row gap-2.5 max-w-md mx-auto"
+        >
           <input
             type="email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="your@email.com"
-            className="flex-1 rounded-lg border border-border bg-bg-card px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors"
+            className="input flex-1"
           />
           <button
             type="submit"
             disabled={status === "loading"}
-            className="rounded-lg bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-6 py-3 text-sm transition-colors disabled:opacity-50"
+            className="btn btn-primary whitespace-nowrap disabled:opacity-50"
           >
-            {status === "loading" ? "Joining..." : "Join Waitlist"}
+            {status === "loading" ? "Joining\u2026" : "Join Waitlist"}
           </button>
         </form>
       )}
       {status === "error" && (
-        <p className="mt-3 text-wow-red text-sm">{message}</p>
+        <p className="mt-3 text-wow-red text-[13px]">{message}</p>
       )}
     </div>
   );

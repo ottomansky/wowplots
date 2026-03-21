@@ -1,93 +1,292 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* WoW-inspired color palette */
-  --color-wow-gold: #f8b700;
-  --color-wow-gold-light: #ffd54f;
-  --color-wow-gold-dark: #c49000;
-  --color-wow-blue: #0070dd;
-  --color-wow-purple: #a335ee;
-  --color-wow-green: #1eff00;
-  --color-wow-orange: #ff8000;
-  --color-wow-red: #ff3333;
+  /* ── Brand Colors ────────────────────────────────────── */
+  /* Gold — the singular warm accent */
+  --color-wow-gold: #d4a017;
+  --color-wow-gold-light: #e8b923;
+  --color-wow-gold-dark: #a67c12;
+  --color-wow-gold-muted: #8b6914;
 
-  /* Base palette - dark fantasy */
-  --color-bg-primary: #0d0f14;
-  --color-bg-secondary: #151820;
-  --color-bg-tertiary: #1c2030;
-  --color-bg-card: #181c28;
-  --color-bg-card-hover: #1e2336;
+  /* WoW rarity spectrum (for accents, not primary use) */
+  --color-wow-blue: #3b82f6;
+  --color-wow-purple: #a855f7;
+  --color-wow-green: #22c55e;
+  --color-wow-orange: #f59e0b;
+  --color-wow-red: #ef4444;
 
-  --color-border: #2a2f42;
-  --color-border-light: #363c54;
+  /* ── Backgrounds (rich navy-blacks, never flat) ─────── */
+  --color-bg-primary: #090b10;
+  --color-bg-secondary: #0f1118;
+  --color-bg-tertiary: #161a24;
+  --color-bg-card: #12151e;
+  --color-bg-card-hover: #191d29;
+  --color-bg-elevated: #1c2030;
 
-  --color-text-primary: #e8e6e1;
-  --color-text-secondary: #9a97a0;
-  --color-text-muted: #636070;
+  /* ── Borders ────────────────────────────────────────── */
+  --color-border: #1e2233;
+  --color-border-light: #2a3045;
+  --color-border-accent: color-mix(in srgb, var(--color-wow-gold) 25%, transparent);
 
-  /* Semantic */
+  /* ── Text ───────────────────────────────────────────── */
+  --color-text-primary: #e4e2dd;
+  --color-text-secondary: #8a8794;
+  --color-text-muted: #555261;
+
+  /* ── Semantic Aliases ───────────────────────────────── */
   --color-accent: var(--color-wow-gold);
   --color-accent-hover: var(--color-wow-gold-light);
 
-  /* Fonts */
+  /* ── Biome Accent Colors ────────────────────────────── */
+  --color-biome-enchanted: #7c3aed;
+  --color-biome-sunlit: #eab308;
+  --color-biome-twilight: #6366f1;
+  --color-biome-crystal: #06b6d4;
+  --color-biome-volcanic: #dc2626;
+  --color-biome-coastal: #0ea5e9;
+
+  /* ── Spacing Scale ──────────────────────────────────── */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  --spacing-4xl: 96px;
+
+  /* ── Typography ─────────────────────────────────────── */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
+
+/* ── Base ───────────────────────────────────────────────── */
 
 body {
   background: var(--color-bg-primary);
   color: var(--color-text-primary);
   font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 8px;
-}
+/* ── Scrollbar ──────────────────────────────────────────── */
 
-::-webkit-scrollbar-track {
-  background: var(--color-bg-secondary);
-}
-
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
   background: var(--color-border-light);
-  border-radius: 4px;
+  border-radius: 3px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-wow-gold-dark);
 }
 
-/* Selection */
+/* ── Selection ──────────────────────────────────────────── */
+
 ::selection {
-  background: color-mix(in srgb, var(--color-wow-gold) 30%, transparent);
+  background: color-mix(in srgb, var(--color-wow-gold) 25%, transparent);
   color: var(--color-text-primary);
 }
 
-/* Animations */
+/* ── Animations ─────────────────────────────────────────── */
+
 @keyframes fade-in {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.04; }
+  50% { opacity: 0.08; }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to { background-position: 200% 0; }
+}
+
 .animate-in {
-  animation: fade-in 0.4s ease-out;
+  animation: fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.fade-in {
-  animation-name: fade-in;
+.animate-in-up {
+  animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Prose styles for articles */
+/* ── Atmospheric Effects ────────────────────────────────── */
+
+.gold-glow {
+  box-shadow: 0 0 30px -5px color-mix(in srgb, var(--color-wow-gold) 20%, transparent);
+}
+
+.gold-glow-sm {
+  box-shadow: 0 0 15px -3px color-mix(in srgb, var(--color-wow-gold) 15%, transparent);
+}
+
+/* Subtle noise texture overlay for depth */
+.noise-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Cards ──────────────────────────────────────────────── */
+
+.card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+  border-color: var(--color-border-accent);
+  background: var(--color-bg-card-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 24px -4px rgba(0, 0, 0, 0.4),
+    0 0 0 1px var(--color-border-accent);
+}
+
+/* ── Buttons ────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--color-wow-gold);
+  color: var(--color-bg-primary);
+  padding: 10px 24px;
+}
+
+.btn-primary:hover {
+  background: var(--color-wow-gold-light);
+  box-shadow: 0 0 20px -4px color-mix(in srgb, var(--color-wow-gold) 40%, transparent);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-light);
+  padding: 10px 24px;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-wow-gold-dark);
+  color: var(--color-wow-gold);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text-secondary);
+  padding: 8px 16px;
+}
+
+.btn-ghost:hover {
+  color: var(--color-wow-gold);
+  background: color-mix(in srgb, var(--color-wow-gold) 8%, transparent);
+}
+
+/* ── Badges ─────────────────────────────────────────────── */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 3px 8px;
+}
+
+.badge-gold {
+  background: color-mix(in srgb, var(--color-wow-gold) 12%, transparent);
+  color: var(--color-wow-gold);
+  border: 1px solid color-mix(in srgb, var(--color-wow-gold) 20%, transparent);
+}
+
+.badge-muted {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+/* ── Inputs ─────────────────────────────────────────────── */
+
+.input {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--color-text-primary);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-wow-gold-dark);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-wow-gold) 10%, transparent);
+}
+
+.select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a8794' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+/* ── Prose / Article Body ───────────────────────────────── */
+
 .prose {
-  --tw-prose-body: var(--color-text-primary);
+  --tw-prose-body: var(--color-text-secondary);
   --tw-prose-headings: var(--color-text-primary);
   --tw-prose-links: var(--color-wow-gold);
   --tw-prose-bold: var(--color-text-primary);
-  --tw-prose-counters: var(--color-text-secondary);
-  --tw-prose-bullets: var(--color-text-secondary);
+  --tw-prose-counters: var(--color-text-muted);
+  --tw-prose-bullets: var(--color-text-muted);
   --tw-prose-hr: var(--color-border);
   --tw-prose-quotes: var(--color-text-secondary);
   --tw-prose-code: var(--color-wow-gold);
   --tw-prose-pre-bg: var(--color-bg-secondary);
+}
+
+/* ── Skeleton Loading ───────────────────────────────────── */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-tertiary) 0%,
+    var(--color-bg-elevated) 50%,
+    var(--color-bg-tertiary) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 8px;
 }

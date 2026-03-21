@@ -1,85 +1,102 @@
 import Link from "next/link";
-import { SITE_NAME } from "@/lib/constants";
+import { Logo } from "@/components/logo";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-bg-secondary mt-auto">
-      <div className="mx-auto max-w-7xl px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-accent font-bold text-lg mb-3">{SITE_NAME}</h3>
-            <p className="text-text-secondary text-sm leading-relaxed">
-              The Pinterest of WoW Housing. Discover, showcase, and get inspired
-              by World of Warcraft player housing builds.
+    <footer className="border-t border-border bg-bg-secondary/40 mt-auto">
+      <div className="mx-auto max-w-7xl px-5 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+          {/* Brand */}
+          <div className="md:col-span-1">
+            <div className="text-accent mb-4">
+              <Logo size="sm" />
+            </div>
+            <p className="text-text-muted text-[13px] leading-relaxed max-w-[240px]">
+              The community gallery for WoW player housing. Discover, showcase,
+              and get inspired.
             </p>
           </div>
 
+          {/* Explore */}
           <div>
-            <h4 className="text-text-primary font-semibold mb-3">Explore</h4>
-            <ul className="space-y-2 text-sm">
+            <h4 className="text-[12px] font-semibold uppercase tracking-widest text-text-muted mb-4">
+              Explore
+            </h4>
+            <ul className="space-y-2.5">
+              {[
+                { href: "/gallery", label: "Gallery" },
+                { href: "/blog", label: "Guides" },
+                { href: "/biomes", label: "Biomes" },
+                { href: "/styles", label: "Styles" },
+                { href: "/sizes", label: "Sizes" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-[13px] text-text-secondary hover:text-accent transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h4 className="text-[12px] font-semibold uppercase tracking-widest text-text-muted mb-4">
+              Resources
+            </h4>
+            <ul className="space-y-2.5">
+              {[
+                { href: "/blog/wow-housing-beginners-guide", label: "Beginner\u2019s Guide" },
+                { href: "/blog/wow-housing-faq", label: "FAQ" },
+                { href: "/blog/wow-housing-layout-import-export", label: "Layout Import/Export" },
+                { href: "/feed.xml", label: "RSS Feed" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-[13px] text-text-secondary hover:text-accent transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Community */}
+          <div>
+            <h4 className="text-[12px] font-semibold uppercase tracking-widest text-text-muted mb-4">
+              Community
+            </h4>
+            <ul className="space-y-2.5">
               <li>
-                <Link
-                  href="/gallery"
-                  className="text-text-secondary hover:text-accent transition-colors"
+                <a
+                  href="https://discord.gg/mUKzQRbb"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[13px] text-text-secondary hover:text-accent transition-colors"
                 >
-                  Gallery
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="text-text-secondary hover:text-accent transition-colors"
-                >
-                  Guides & Articles
-                </Link>
+                  Discord
+                </a>
               </li>
               <li>
                 <Link
                   href="/about"
-                  className="text-text-secondary hover:text-accent transition-colors"
+                  className="text-[13px] text-text-secondary hover:text-accent transition-colors"
                 >
                   About
                 </Link>
               </li>
             </ul>
           </div>
-
-          <div>
-            <h4 className="text-text-primary font-semibold mb-3">Community</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a
-                  href="https://discord.gg/mUKzQRbb"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-text-secondary hover:text-accent transition-colors"
-                >
-                  Discord
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://reddit.com/r/wowhousing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-text-secondary hover:text-accent transition-colors"
-                >
-                  Reddit
-                </a>
-              </li>
-            </ul>
-          </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-border text-center text-xs text-text-muted">
-          <p>
-            {SITE_NAME} is a fan site and is not affiliated with or endorsed by
-            Blizzard Entertainment.
-          </p>
-          <p className="mt-1">
-            World of Warcraft and related marks are trademarks of Blizzard
-            Entertainment, Inc.
-          </p>
+        <div className="mt-14 pt-6 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-3 text-[11px] text-text-muted">
+          <p>&copy; {new Date().getFullYear()} WoWPlots. Not affiliated with Blizzard Entertainment.</p>
+          <p>World of Warcraft is a trademark of Blizzard Entertainment, Inc.</p>
         </div>
       </div>
     </footer>

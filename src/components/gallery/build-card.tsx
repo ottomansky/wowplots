@@ -11,13 +11,13 @@ export function BuildCard({ build }: Props) {
   const imageUrl = build.primaryImage
     ? build.primaryImage.startsWith("http")
       ? build.primaryImage
-      : `https://placehold.co/1200x675/1c2030/f8b700?text=${encodeURIComponent(build.title)}`
-    : `https://placehold.co/1200x675/1c2030/f8b700?text=${encodeURIComponent(build.title)}`;
+      : `https://placehold.co/1200x675/12151e/d4a017?text=${encodeURIComponent(build.title)}`
+    : `https://placehold.co/1200x675/12151e/d4a017?text=${encodeURIComponent(build.title)}`;
 
   return (
     <Link
       href={`/gallery/${build.slug}`}
-      className="group relative block rounded-2xl border border-border bg-bg-card overflow-hidden transition-all duration-300 hover:border-wow-gold/40 hover:shadow-[0_0_30px_-5px_rgba(248,183,0,0.15)] hover:-translate-y-1"
+      className="card group relative block overflow-hidden"
     >
       {/* Image */}
       <div className="relative aspect-[16/9] overflow-hidden bg-bg-tertiary">

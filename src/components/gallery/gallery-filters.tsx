@@ -33,7 +33,7 @@ export function GalleryFilters() {
       <select
         value={currentBiome}
         onChange={(e) => setFilter("biome", e.target.value)}
-        className="rounded-lg border border-border bg-bg-card px-3 py-2 text-[13px] text-text-primary focus:border-wow-gold/50 focus:outline-none focus:ring-1 focus:ring-wow-gold/20 transition-colors appearance-none cursor-pointer min-w-[140px]"
+        className="input select min-w-[140px]"
       >
         <option value="">All Biomes</option>
         {BIOMES.map((b) => (
@@ -47,7 +47,7 @@ export function GalleryFilters() {
       <select
         value={currentSize}
         onChange={(e) => setFilter("size", e.target.value)}
-        className="rounded-lg border border-border bg-bg-card px-3 py-2 text-[13px] text-text-primary focus:border-wow-gold/50 focus:outline-none focus:ring-1 focus:ring-wow-gold/20 transition-colors appearance-none cursor-pointer min-w-[120px]"
+        className="input select min-w-[120px]"
       >
         <option value="">All Sizes</option>
         {HOUSE_SIZES.map((s) => (
@@ -61,7 +61,7 @@ export function GalleryFilters() {
       <select
         value={currentTag}
         onChange={(e) => setFilter("tag", e.target.value)}
-        className="rounded-lg border border-border bg-bg-card px-3 py-2 text-[13px] text-text-primary focus:border-wow-gold/50 focus:outline-none focus:ring-1 focus:ring-wow-gold/20 transition-colors appearance-none cursor-pointer min-w-[120px]"
+        className="input select min-w-[120px]"
       >
         <option value="">All Styles</option>
         {STYLE_TAGS.map((t) => (

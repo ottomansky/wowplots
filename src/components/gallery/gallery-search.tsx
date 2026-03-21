@@ -36,7 +36,7 @@ export function GallerySearch() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search builds..."
-        className="w-full rounded-lg border border-border bg-bg-card pl-10 pr-4 py-2.5 text-[13px] text-text-primary placeholder:text-text-muted focus:border-wow-gold/50 focus:outline-none focus:ring-1 focus:ring-wow-gold/20 transition-colors"
+        className="input pl-10"
       />
     </form>
   );
