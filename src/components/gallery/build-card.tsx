@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import type { BuildCard } from "@/lib/db/queries";
 import { BIOMES } from "@/lib/constants";

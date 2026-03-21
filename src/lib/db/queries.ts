@@ -6,8 +6,6 @@ import {
   tags,
   buildTags,
   users,
-  likes,
-  bookmarks,
 } from "@/db/schema";
 
 // ─── Types ──────────────────────────────────────────────────────────────────

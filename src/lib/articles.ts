@@ -68,7 +68,9 @@ export function getAllArticles(): ArticleMeta[] {
     .map((slug) => {
       const article = getArticle(slug);
       if (!article) return null;
-      const { content: _, toc: _toc, ...meta } = article;
+      const { content: _content, toc: _toc, ...meta } = article;
+      void _content;
+      void _toc;
       return meta;
     })
     .filter((a): a is ArticleMeta => a !== null)

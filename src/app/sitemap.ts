@@ -1,18 +1,10 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL, BIOMES, HOUSE_SIZES } from "@/lib/constants";
+import { SITE_URL, BIOMES, HOUSE_SIZES, STYLE_TAGS } from "@/lib/constants";
 import { getArticleSlugs } from "@/lib/articles";
 
-const STYLE_SLUGS = [
-  "rustic",
-  "elegant",
-  "gothic",
-  "nature",
-  "minimalist",
-  "industrial",
-  "cozy",
-  "tavern",
-];
-
+// Note: Individual gallery build URLs (/gallery/[slug]) cannot be included here
+// because this is a static route and D1 database is not accessible at build time.
+// Consider generating a dynamic sitemap via an API route if build URLs are needed.
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
@@ -30,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  const styleUrls = STYLE_SLUGS.map((s) => ({
+  const styleUrls = STYLE_TAGS.map((s) => ({
     url: `${SITE_URL}/styles/${s}`,
     lastModified: now,
     changeFrequency: "weekly" as const,

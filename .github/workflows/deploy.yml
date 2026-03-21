@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  deploy:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,6 +28,24 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+  deploy:
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
       - name: Build (Next.js + OpenNext)
         run: pnpm exec opennextjs-cloudflare build
 
@@ -37,3 +55,16 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy
+
+      - name: Smoke test production
+        run: |
+          sleep 10
+          for url in "/" "/gallery" "/blog" "/sitemap.xml" "/robots.txt"; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" "https://wowplots.com${url}")
+            echo "${code} ${url}"
+            if [ "$code" != "200" ]; then
+              echo "FAILED: ${url} returned ${code}"
+              exit 1
+            fi
+          done
+          echo "All smoke tests passed"

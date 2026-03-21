@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { getDb } from "@/db";
 import { bookmarks, builds, buildImages, users } from "@/db/schema";
@@ -76,9 +77,9 @@ export default async function BookmarksPage() {
           <p className="text-text-secondary text-[15px] mb-4">
             You haven&apos;t saved any builds yet.
           </p>
-          <a href="/gallery" className="btn btn-primary">
+          <Link href="/gallery" className="btn btn-primary">
             Browse Gallery
-          </a>
+          </Link>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">

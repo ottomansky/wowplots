@@ -1,10 +1,10 @@
-import { test } from "@playwright/test";
+import { test, type Browser } from "@playwright/test";
 
 test.setTimeout(120000);
 
 const DIR = "tests/screenshots";
 
-async function snap(browser: any, path: string, name: string) {
+async function snap(browser: Browser, path: string, name: string) {
   for (const [vpName, w, h] of [["desktop", 1440, 900], ["tablet", 768, 1024], ["mobile", 375, 812]] as const) {
     const ctx = await browser.newContext({ viewport: { width: w, height: h } });
     const page = await ctx.newPage();
